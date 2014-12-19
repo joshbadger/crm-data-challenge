@@ -1,4 +1,4 @@
-require_relative 'data/crm'
+require_relative '../data/crm'
 require 'pp'
 
 result = []

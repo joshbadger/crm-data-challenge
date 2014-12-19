@@ -1,18 +1,18 @@
-require_relative 'data/crm'
+require_relative '../data/crm'
 require 'pp'
 
-
+result = []
 CRM[:people].each do |person|
-
   person[:employments].each do |employment|
     if employment
-      entry = {}
-      entry[:company_id] = employment[:company_id]
-      entry[:company_name] = CRM[:companies].find{ |company| company[:id] == employment[:company_id] }[:name]
-      entry[:person_id] = person[:id]
-      entry[:person_first_name] = person[:first_name]
-      entry[:person_last_name] = person[:last_name]
-      entry[:title] = employment[:title]
+      entry = {
+        company_id: employment[:company_id],
+        company_name: CRM[:companies].find{ |company| company[:id] == employment[:company_id] }[:name],
+        person_id: person[:id],
+        person_first_name: person[:first_name],
+        person_last_name: person[:last_name],
+        title: employment[:title]
+      }
       result << entry
     end
   end
