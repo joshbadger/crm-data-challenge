@@ -4,7 +4,7 @@ require 'pp'
 result = []
 CRM[:people].each do |person|
   if person[:employments].empty?
-    result << person.tap {|person| person.delete(:employments) }
+    result << person.dup.tap {|person| person.delete(:employments) }
   end
 end
 pp result
